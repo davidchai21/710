@@ -136,7 +136,7 @@ dram_req_t *frfcfs_scheduler::schedule( unsigned bank, unsigned curr_row )
 	dram_req_t *req = (*next);
 	
 	// ********* David:
-	if (req->data->get_access_type() != GLOBAL_ACC_R && req->data->isatomic())
+	if (req->data->get_access_type() != GLOBAL_ACC_R || req->data->isatomic())
 	{
 		status[m_dram->id][bank]=true;
 	}
